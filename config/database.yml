@@ -12,3 +12,8 @@ development:
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
+production:
+  adapter: mysql
+  database: highcharts_production
+  username: root
+  password:
