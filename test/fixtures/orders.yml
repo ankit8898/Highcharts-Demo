@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  numbers: 1
+  purchased: 2012-02-11 11:39:42
+  shipping: MyString
+  total: 1
+
+two:
+  numbers: 1
+  purchased: 2012-02-11 11:39:42
+  shipping: MyString
+  total: 1
