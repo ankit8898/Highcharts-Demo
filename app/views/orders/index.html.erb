@@ -6,7 +6,8 @@
 $(function() {
 new Highcharts.Chart({
 chart: {
-renderTo: "orders_chart"
+renderTo: "orders_chart",
+defaultSeriesType: 'line',
 },
 title: {
 text: "Ankit's Highchart Demo"
@@ -17,40 +18,114 @@ type: "datetime"
 yAxis: {
 title: {
 text: "Dollar"
-}
 },
+plotLines: [{
+value: 0,
+width: 1,
+color: '#808080'
+}]
+},
+tooltip: {  
+formatter: function () {  
+return Highcharts.dateFormat("%B %e %Y", this.x) + ': ' +  
+'$' + Highcharts.numberFormat(this.y, 2); 
+}  
+},
+legend: {
+layout: 'vertical',
+align: 'right',
+verticalAlign: 'top',
+x: -10,
+y: 100,
+borderWidth: 0
+},
+
 series: [{
-pointInterval: <%= 2.days * 1000 %>,
+name : "Shipping",
+pointInterval: <%= 5.days * 1000 %>,
 pointStart: <%= 1.week.ago.to_i * 1000 %>,
-data: <%= (1.day.ago.to_date..Date.today + 20.days).map {|date| Order.data(date).to_f}.inspect%>
+data: <%= (1.week.ago.to_date..Date.today + 20.days).map {|date| Order.data(date).to_f}.inspect%>
 }]
 
 });
+
+
+new Highcharts.Chart({
+chart: {
+renderTo: "person_name",
+defaultSeriesType: 'line',
+},
+title: {
+text: "Ankit's Highchart Demo 2"
+},
+xAxis: {
+type: "datetime"
+},
+yAxis: {
+title: {
+text: "Dollar"
+},
+plotLines: [{
+value: 0,
+width: 1,
+color: '#808080'
+}]
+},
+tooltip: {  
+formatter: function () {  
+return Highcharts.dateFormat("%B %e %Y", this.x) + ': ' +  
+'$' + Highcharts.numberFormat(this.y, 2); 
+}  
+},
+legend: {
+layout: 'vertical',
+align: 'right',
+verticalAlign: 'top',
+x: -10,
+y: 100,
+borderWidth: 0
+},
+
+series: [{
+name : "Shipping 1",
+pointInterval: <%= 3.days * 1000 %>,
+pointStart: <%= 8.week.ago.to_i * 1000 %>,
+data: <%= (5.week.ago.to_date..Date.today + 20.days).map {|date| Order.data(date).to_f}.inspect%>
+},
+{
+name : "Shipping 2",
+pointInterval: <%= 3.days * 1000 %>,
+pointStart: <%= 8.week.ago.to_i * 1000 %>,
+data: <%= (3.weeks.ago.to_date..Date.today + 20.days).map {|date| Order.data(date) * 2}.inspect%>
+}]
+
+});
+
 });
 </script>
 <div id="orders_chart" style="width:560px; height:300px;"></div>
-
+<div id="person_name" style="width:560px; height:300px;"></div>
 <table>
-  <tr>
-    <th>Numbers</th>
-    <th>Purchased</th>
-    <th>Shipping</th>
-    <th>Total</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<tr>
+<th>Numbers</th>
+<th>Purchased</th>
+<th>Shipping</th>
+<th>Total</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
 
 <% @orders.each do |order| %>
-  <tr>
-    <td><%= order.numbers %></td>
-    <td><%= order.purchased.to_date %></td>
-    <td><%= order.shipping %></td>
-    <td><%= order.total %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<tr>
+<td><%= order.numbers %></td>
+<td><%= order.purchased.to_date %></td>
+<td><%= order.shipping %></td>
+<td><%= order.total %></td>
+<td><%= link_to 'Show', order %></td>
+<td><%= link_to 'Edit', edit_order_path(order) %></td>
+<td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
+</tr>
 <% end %>
 </table>
 

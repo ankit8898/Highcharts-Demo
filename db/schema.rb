@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211060942) do
+ActiveRecord::Schema.define(:version => 20120211131246) do
 
   create_table "orders", :force => true do |t|
     t.integer  "numbers"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120211060942) do
     t.integer  "total"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "order_name"
   end
 
 end
