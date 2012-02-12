@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  total_experience: 1.5
+  technology_experience: 1.5
+  interview_date: 2012-02-12 10:48:44
+
+two:
+  total_experience: 1.5
+  technology_experience: 1.5
+  interview_date: 2012-02-12 10:48:44

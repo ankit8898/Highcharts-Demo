@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211131246) do
+ActiveRecord::Schema.define(:version => 20120212051844) do
+
+  create_table "interview_details", :force => true do |t|
+    t.float    "total_experience"
+    t.float    "technology_experience"
+    t.datetime "interview_date"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "numbers"
